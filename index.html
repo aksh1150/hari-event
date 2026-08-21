@@ -1,69 +1,113 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hari Event</title>
+    <meta charset=utf-8>
+    <meta name=viewport content='width=device-width,initial-scale=1'>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin: 0;
+            background: linear-gradient(135deg, #f1ddd0, #fffaf5);
+            font-family: Georgia, serif;
+            padding: 20px
         }
-        
-        .container {
+
+        .card {
+            max-width: 480px;
+            margin: auto;
+            background: #fffaf5;
+            border: 2px solid #c99a3a;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .12)
+        }
+
+        .logo {
+            font-size: 64px;
+            color: #a87316;
+            font-style: italic;
             text-align: center;
-            background: white;
-            padding: 50px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            max-width: 600px;
+            margin: 0
         }
-        
-        h1 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 2.5em;
+
+        .sub {
+            text-align: center;
+            letter-spacing: 4px;
+            margin: 0
         }
-        
-        p {
-            color: #666;
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 30px;
+
+        .tag {
+            text-align: center;
+            color: #5a4b3d
         }
-        
+
         .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 30px;
+            display: block;
+            text-align: center;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: transform 0.3s ease;
+            padding: 14px;
+            border-radius: 999px;
+            margin: 12px 0;
+            font-weight: bold
         }
-        
-        .btn:hover {
-            transform: translateY(-2px);
+
+        .gold {
+            background: #b88425;
+            color: #fff
+        }
+
+        .light {
+            background: #fff;
+            color: #8d6419;
+            border: 1px solid #b88425
+        }
+
+        ul {
+            padding-left: 20px
+        }
+
+        li {
+            margin: 8px 0
+        }
+
+        .qr {
+            display: block;
+            margin: 18px auto;
+            width: 180px;
+            border: 6px solid #fff;
+            outline: 2px solid #c99a3a
+        }
+
+        .small {
+            text-align: center;
+            font-size: 13px;
+            color: #7b6a5c
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>🎉 Hari Event</h1>
-        <p>Welcome to your event page! This is a starter template for your GitHub Pages site.</p>
-        <p>Edit this file to add your event details, photos, and information.</p>
-        <a href="#" class="btn">Learn More</a>
+    <div class=card>
+        <h1 class=logo>Hari</h1>
+        <h3 class=sub>EVENTS & DECOR</h3>
+        <p class=tag>Creating Beautiful Moments, One Celebration at a Time ♡</p>
+        <a class='btn gold' href='tel:+16477619135'>📞 Call Now</a>
+        <a class='btn gold' href='https://wa.me/16477619135'>💬 WhatsApp</a>
+        <a class='btn light' href='Hari_Events_Decor.vcf' download>📇 Save Contact</a>
+        <a class='btn light' href='mailto:harieventsdecor@gmail.com'>✉️ Email</a>
+        <ul>
+            <li>Baby Shower</li>
+            <li>Birthday Decor</li>
+            <li>Engagement Decor</li>
+            <li>Housewarming Decor</li>
+            <li>Corporate Decor</li>
+            <li>Spiritual Decor</li>
+        </ul>
+        <img class=qr
+            src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACdUlEQVR4nO2bTWrkMBCFvxobspQhB8hR5JsNOdLcwD5KDhCwlgGZNwvJbXeTH0I6HTtULUy7+1s8KF6pVFKb+EyMfz6Fg/POO++88847/xZvNVogtUAyWx8l+hvqcf7KfJQkTcDYnX4LEtBIknTOf7ce56/Mp5NDmQ1Cxqyby3fV2DfV4/w38tanFuLTnTTsQY/zV+RDRo8dpVJb/+N6nP8KvxTeICCBwZ0gPLca+9lEgu0IZG/6nf8gts0TjYjTxWP5LUrSsDf9zr8fxb+rQ0WarTzGrqEa+3Z6nL8uX/0bldFAIwgZ6q4ooyHkgpRw/x6Xt796sfo5ZKynkfXpTttOa8f6nX8lan81dpOM1EH81yJSmwVzK9I9kGwp4XvT7/wHUetuyMsQq7yqtlZRGeJ04vam3/kPYs2vhvKaWRdhoNlm3/N7MH7TX5Wslg1RkNZMe391XH7x7+LVi1MFDUF1SOn+PTIfXqwYNj61APPZceFSvfer3/k34mx+RdkEb9fkUp+z91fH5JfFdWpElMpUsvTPZRGeoLbTnt8D8kt/NVH75+HUOsepqfkthdvze0D+NH/OLYTn1ghAHEDjw4sRB58/H5nf+Hcxca3Pm4W5ONn9e0B+u7ndJFSqJw1xzb7n97D8en+yXLIDyv0c3x/9Dr6MniewPkh67ObNSRKjtVh/Sz3OX4k/X3+XrVGc1kkWZwcPe9Pv/PvRXrxbfDIEGY29IdJ9ttHw88HfwWsIkllHsTPjQ90OW/8jepz/Gn86P6pDrM1Uclj7Z59PHpVf7m+UdqrBCM3SNdPIYD4r4XvT7/z7Yf7/buedd955552/Of8fhOD8LHCAXd8AAAAASUVORK5CYII='
+            alt='QR'>
+        <p class=small>@harieventsdecor • Brampton, Ontario</p>
     </div>
 </body>
+
 </html>
