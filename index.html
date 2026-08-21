@@ -1,113 +1,432 @@
 <!doctype html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset=utf-8>
-    <meta name=viewport content='width=device-width,initial-scale=1'>
-    <style>
-        body {
-            margin: 0;
-            background: linear-gradient(135deg, #f1ddd0, #fffaf5);
-            font-family: Georgia, serif;
-            padding: 20px
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hari Events & Decor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marcellus&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #fbf3e7;
+    --cream-deep: #f3e3cd;
+    --blush: #f0c9c0;
+    --gold: #b8863b;
+    --gold-deep: #8a5f22;
+    --ink: #4a3a2c;
+    --ink-soft: #7a6552;
+    --peacock-teal: #1f6f6b;
+    --peacock-blue: #2c4f8c;
+  }
 
-        .card {
-            max-width: 480px;
-            margin: auto;
-            background: #fffaf5;
-            border: 2px solid #c99a3a;
-            border-radius: 24px;
-            padding: 24px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, .12)
-        }
+  *{box-sizing:border-box;}
 
-        .logo {
-            font-size: 64px;
-            color: #a87316;
-            font-style: italic;
-            text-align: center;
-            margin: 0
-        }
+  body{
+    margin:0;
+    min-height:100vh;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(240,201,192,.55), transparent 40%),
+      radial-gradient(circle at 88% 92%, rgba(240,201,192,.5), transparent 42%),
+      linear-gradient(160deg, var(--cream) 0%, var(--cream-deep) 100%);
+    font-family: 'Marcellus', serif;
+    color: var(--ink);
+    padding: 28px 16px;
+    display:flex;
+    justify-content:center;
+  }
 
-        .sub {
-            text-align: center;
-            letter-spacing: 4px;
-            margin: 0
-        }
+  .card{
+    position:relative;
+    max-width: 480px;
+    width:100%;
+    background: linear-gradient(180deg, #fffdf9, #fdf6ea);
+    border-radius: 28px;
+    padding: 3px;
+    box-shadow: 0 24px 50px rgba(122, 88, 40, .22), 0 2px 8px rgba(122,88,40,.12);
+  }
 
-        .tag {
-            text-align: center;
-            color: #5a4b3d
-        }
+  .card-inner{
+    position:relative;
+    border: 1.5px solid var(--gold);
+    outline: 1px solid rgba(184,134,59,.35);
+    outline-offset: 4px;
+    border-radius: 24px;
+    padding: 34px 26px 28px;
+    overflow:hidden;
+  }
 
-        .btn {
-            display: block;
-            text-align: center;
-            text-decoration: none;
-            padding: 14px;
-            border-radius: 999px;
-            margin: 12px 0;
-            font-weight: bold
-        }
+  /* corner floral flourishes, drawn in CSS/SVG so no external assets needed */
+  .corner{
+    position:absolute;
+    width: 92px;
+    height: 92px;
+    opacity: .9;
+    pointer-events:none;
+  }
+  .corner svg{width:100%;height:100%;}
+  .tl{ top:-6px; left:-6px; }
+  .tr{ top:-6px; right:-6px; transform: scaleX(-1); }
+  .bl{ bottom:-6px; left:-6px; transform: scaleY(-1); }
+  .br{ bottom:-6px; right:-6px; transform: scale(-1,-1); }
 
-        .gold {
-            background: #b88425;
-            color: #fff
-        }
+  .peacock{
+    display:block;
+    margin: 0 auto -8px;
+    width: 46px;
+    height: 70px;
+  }
 
-        .light {
-            background: #fff;
-            color: #8d6419;
-            border: 1px solid #b88425
-        }
+  .brand{
+    text-align:center;
+    margin-top: 4px;
+    position:relative;
+    z-index:2;
+  }
 
-        ul {
-            padding-left: 20px
-        }
+  .logo{
+    font-family:'Tangerine', cursive;
+    font-size: 96px;
+    line-height: .8;
+    margin: 0;
+    background: linear-gradient(180deg, #d9a441 0%, #8a5f22 55%, #b8863b 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    filter: drop-shadow(0 1px 0 rgba(255,255,255,.6));
+  }
 
-        li {
-            margin: 8px 0
-        }
+  .sub{
+    text-align:center;
+    letter-spacing: 6px;
+    font-family:'Marcellus', serif;
+    font-size: 15px;
+    color: var(--gold-deep);
+    margin: 6px 0 10px;
+    text-transform: uppercase;
+  }
 
-        .qr {
-            display: block;
-            margin: 18px auto;
-            width: 180px;
-            border: 6px solid #fff;
-            outline: 2px solid #c99a3a
-        }
+  .rule{
+    width: 130px;
+    height: 1px;
+    margin: 0 auto 14px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
 
-        .small {
-            text-align: center;
-            font-size: 13px;
-            color: #7b6a5c
-        }
-    </style>
+  .tag{
+    text-align:center;
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin: 0 0 22px;
+    line-height:1.5;
+  }
+
+  .actions{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 8px;
+    text-decoration:none;
+    padding: 13px 10px;
+    border-radius: 999px;
+    font-family:'Marcellus', serif;
+    font-size: 14px;
+    letter-spacing:.3px;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:active{ transform: scale(.97); }
+  .btn svg{ width:16px; height:16px; flex-shrink:0; }
+
+  .gold{
+    background: linear-gradient(180deg, #c9964a, #a4711f);
+    color: #fff8ec;
+    box-shadow: 0 6px 14px rgba(164,113,31,.35);
+  }
+  .light{
+    background: #fffaf0;
+    color: var(--gold-deep);
+    border: 1px solid var(--gold);
+  }
+
+  .section-title{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 10px;
+    margin: 4px 0 14px;
+  }
+  .section-title span{
+    font-family:'Marcellus', serif;
+    letter-spacing: 3px;
+    font-size: 13px;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    white-space:nowrap;
+  }
+  .section-title .line{
+    height:1px;
+    flex:1;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+  .section-title .line.right{
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  .services{
+    list-style:none;
+    margin: 0 0 24px;
+    padding: 0;
+    display:grid;
+    gap: 10px;
+  }
+  .services li{
+    display:flex;
+    align-items:center;
+    gap: 12px;
+    font-family:'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--ink);
+    padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(184,134,59,.35);
+  }
+  .services li:last-child{ border-bottom:none; }
+  .services .ic{
+    width: 30px;
+    height: 30px;
+    flex-shrink:0;
+    border-radius:50%;
+    background: linear-gradient(180deg, #f3ddb8, #e7c48a);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color: var(--gold-deep);
+  }
+  .services .ic svg{ width:16px; height:16px; }
+
+  .contacts{
+    display:grid;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .contact-row{
+    display:flex;
+    align-items:center;
+    gap: 12px;
+    font-family:'Cormorant Garamond', serif;
+    font-size: 17px;
+  }
+  .contact-row a{ color: var(--ink); text-decoration:none; }
+  .contact-row .ic{
+    width: 30px;
+    height: 30px;
+    flex-shrink:0;
+    border-radius:50%;
+    background: linear-gradient(180deg, #c9964a, #8a5f22);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff8ec;
+  }
+  .contact-row .ic svg{ width:15px; height:15px; }
+
+  .qr-wrap{
+    text-align:center;
+    margin: 6px 0 6px;
+  }
+  .qr{
+    display:block;
+    margin: 0 auto 12px;
+    width: 168px;
+    height:168px;
+    padding: 10px;
+    background:#fff;
+    border-radius: 16px;
+    border: 1px solid var(--gold);
+    box-shadow: 0 8px 20px rgba(122,88,40,.18);
+  }
+  .celebrate{
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--gold-deep);
+    margin: 0 0 8px;
+  }
+  .socials{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap: 10px;
+    font-family:'Marcellus', serif;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .socials .ic{
+    width: 26px; height:26px; border-radius:50%;
+    background: linear-gradient(180deg, #c9964a, #8a5f22);
+    display:flex; align-items:center; justify-content:center; color:#fff8ec;
+  }
+  .socials .ic svg{ width:14px; height:14px; }
+
+  .foot-rule{
+    width: 60%;
+    height:1px;
+    margin: 22px auto 12px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .location{
+    text-align:center;
+    font-family:'Marcellus', serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .card{ animation: rise .6s ease both; }
+    @keyframes rise{
+      from{ opacity:0; transform: translateY(14px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+  }
+</style>
 </head>
-
 <body>
-    <div class=card>
-        <h1 class=logo>Hari</h1>
-        <h3 class=sub>EVENTS & DECOR</h3>
-        <p class=tag>Creating Beautiful Moments, One Celebration at a Time ♡</p>
-        <a class='btn gold' href='tel:+16477619135'>📞 Call Now</a>
-        <a class='btn gold' href='https://wa.me/16477619135'>💬 WhatsApp</a>
-        <a class='btn light' href='Hari_Events_Decor.vcf' download>📇 Save Contact</a>
-        <a class='btn light' href='mailto:harieventsdecor@gmail.com'>✉️ Email</a>
-        <ul>
-            <li>Baby Shower</li>
-            <li>Birthday Decor</li>
-            <li>Engagement Decor</li>
-            <li>Housewarming Decor</li>
-            <li>Corporate Decor</li>
-            <li>Spiritual Decor</li>
-        </ul>
-        <img class=qr
-            src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACdUlEQVR4nO2bTWrkMBCFvxobspQhB8hR5JsNOdLcwD5KDhCwlgGZNwvJbXeTH0I6HTtULUy7+1s8KF6pVFKb+EyMfz6Fg/POO++88847/xZvNVogtUAyWx8l+hvqcf7KfJQkTcDYnX4LEtBIknTOf7ce56/Mp5NDmQ1Cxqyby3fV2DfV4/w38tanFuLTnTTsQY/zV+RDRo8dpVJb/+N6nP8KvxTeICCBwZ0gPLca+9lEgu0IZG/6nf8gts0TjYjTxWP5LUrSsDf9zr8fxb+rQ0WarTzGrqEa+3Z6nL8uX/0bldFAIwgZ6q4ooyHkgpRw/x6Xt796sfo5ZKynkfXpTttOa8f6nX8lan81dpOM1EH81yJSmwVzK9I9kGwp4XvT7/wHUetuyMsQq7yqtlZRGeJ04vam3/kPYs2vhvKaWRdhoNlm3/N7MH7TX5Wslg1RkNZMe391XH7x7+LVi1MFDUF1SOn+PTIfXqwYNj61APPZceFSvfer3/k34mx+RdkEb9fkUp+z91fH5JfFdWpElMpUsvTPZRGeoLbTnt8D8kt/NVH75+HUOsepqfkthdvze0D+NH/OLYTn1ghAHEDjw4sRB58/H5nf+Hcxca3Pm4W5ONn9e0B+u7ndJFSqJw1xzb7n97D8en+yXLIDyv0c3x/9Dr6MniewPkh67ObNSRKjtVh/Sz3OX4k/X3+XrVGc1kkWZwcPe9Pv/PvRXrxbfDIEGY29IdJ9ttHw88HfwWsIkllHsTPjQ90OW/8jepz/Gn86P6pDrM1Uclj7Z59PHpVf7m+UdqrBCM3SNdPIYD4r4XvT7/z7Yf7/buedd955552/Of8fhOD8LHCAXd8AAAAASUVORK5CYII='
-            alt='QR'>
-        <p class=small>@harieventsdecor • Brampton, Ontario</p>
-    </div>
-</body>
+  <div class="card">
+    <div class="card-inner">
 
+      <div class="corner tl" aria-hidden="true">
+        <svg viewBox="0 0 100 100" fill="none">
+          <path d="M4 4 C 30 4, 40 20, 46 46" stroke="#b8863b" stroke-width="1.4" fill="none" opacity=".7"/>
+          <circle cx="10" cy="10" r="4" fill="#f0c9c0"/>
+          <circle cx="22" cy="16" r="6" fill="#e9b8ab"/>
+          <circle cx="34" cy="26" r="5" fill="#f3ddb8"/>
+          <circle cx="16" cy="26" r="3.5" fill="#f0c9c0"/>
+        </svg>
+      </div>
+      <div class="corner tr" aria-hidden="true">
+        <svg viewBox="0 0 100 100" fill="none">
+          <path d="M4 4 C 30 4, 40 20, 46 46" stroke="#b8863b" stroke-width="1.4" fill="none" opacity=".7"/>
+          <circle cx="10" cy="10" r="4" fill="#f0c9c0"/>
+          <circle cx="22" cy="16" r="6" fill="#e9b8ab"/>
+          <circle cx="34" cy="26" r="5" fill="#f3ddb8"/>
+          <circle cx="16" cy="26" r="3.5" fill="#f0c9c0"/>
+        </svg>
+      </div>
+      <div class="corner bl" aria-hidden="true">
+        <svg viewBox="0 0 100 100" fill="none">
+          <path d="M4 4 C 30 4, 40 20, 46 46" stroke="#b8863b" stroke-width="1.4" fill="none" opacity=".7"/>
+          <circle cx="10" cy="10" r="4" fill="#f0c9c0"/>
+          <circle cx="22" cy="16" r="6" fill="#e9b8ab"/>
+          <circle cx="34" cy="26" r="5" fill="#f3ddb8"/>
+          <circle cx="16" cy="26" r="3.5" fill="#f0c9c0"/>
+        </svg>
+      </div>
+      <div class="corner br" aria-hidden="true">
+        <svg viewBox="0 0 100 100" fill="none">
+          <path d="M4 4 C 30 4, 40 20, 46 46" stroke="#b8863b" stroke-width="1.4" fill="none" opacity=".7"/>
+          <circle cx="10" cy="10" r="4" fill="#f0c9c0"/>
+          <circle cx="22" cy="16" r="6" fill="#e9b8ab"/>
+          <circle cx="34" cy="26" r="5" fill="#f3ddb8"/>
+          <circle cx="16" cy="26" r="3.5" fill="#f0c9c0"/>
+        </svg>
+      </div>
+
+      <!-- peacock feather -->
+      <svg class="peacock" viewBox="0 0 60 90" aria-hidden="true">
+        <path d="M30 88 C 30 60, 30 40, 30 20" stroke="#8a5f22" stroke-width="2" fill="none"/>
+        <ellipse cx="30" cy="16" rx="14" ry="20" fill="#f3ddb8" opacity=".9"/>
+        <ellipse cx="30" cy="16" rx="9" ry="14" fill="var(--peacock-teal)"/>
+        <ellipse cx="30" cy="16" rx="4.5" ry="8" fill="var(--peacock-blue)"/>
+        <ellipse cx="30" cy="14" rx="2" ry="3.5" fill="#c9964a"/>
+      </svg>
+
+      <div class="brand">
+        <h1 class="logo">Hari</h1>
+        <h3 class="sub">Events &amp; Decor</h3>
+        <div class="rule"></div>
+        <p class="tag">Creating Beautiful Moments,<br>One Celebration at a Time &hearts;</p>
+      </div>
+
+      <div class="actions">
+        <a class="btn gold" href="tel:+16477619135">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.5.4-1 1-1h3.5c.5 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+          Call Now
+        </a>
+        <a class="btn gold" href="https://wa.me/16477619135">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.5.8 3.1 1.3 4.8 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1.1-2.5c.3-.3.6-.4.9-.4h.6c.2 0 .5 0 .7.5.3.7.9 2.3 1 2.4.1.2.1.4 0 .6-.1.2-.2.4-.4.6-.2.2-.4.5-.6.6-.2.2-.4.4-.2.8.2.4 1 1.6 2.1 2.6 1.4 1.3 2.6 1.7 3 1.9.4.2.6.1.8-.1.2-.3.9-1 1.1-1.4.2-.4.5-.3.8-.2.3.1 2 .9 2.3 1.1.3.2.5.3.6.4.1.2.1.9-.1 1.6z"/></svg>
+          WhatsApp
+        </a>
+        <a class="btn light" href="Hari_Events_Decor.vcf" download>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-3 0-9 1.5-9 4.5V21h18v-2.5c0-3-6-4.5-9-4.5z"/></svg>
+          Save Contact
+        </a>
+        <a class="btn light" href="mailto:harieventsdecor@gmail.com">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Email
+        </a>
+      </div>
+
+      <div class="section-title"><span class="line"></span><span>Our Services</span><span class="line right"></span></div>
+      <ul class="services">
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 3a3 3 0 0 0-3 3c0 1.2.6 2.1 1.5 2.6C5.6 9.2 5 10 5 11a3 3 0 0 0 3 3c.4 0 .7-.1 1-.2V17a3 3 0 0 0 6 0v-3.2c.3.1.6.2 1 .2a3 3 0 0 0 3-3c0-1-.6-1.8-1.5-2.4C18.4 8.1 19 7.2 19 6a3 3 0 0 0-6 0c0 .8.3 1.4.8 1.9A2.9 2.9 0 0 0 12 6a2.9 2.9 0 0 0-1.8 1.9c.5-.5.8-1.1.8-1.9a3 3 0 0 0-3-3z"/></svg></span>Baby Shower Decorations</li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-1.1 0-2 .9-2 2 0 .5.2 1 .5 1.3C9.6 6 9 6.9 9 8h6c0-1.1-.6-2-1.5-2.7.3-.3.5-.8.5-1.3 0-1.1-.9-2-2-2zM4 10v10h16V10c0-1-1-2-2-2H6c-1 0-2 1-2 2zm4 3c1 0 1.5-1 2-1s1 1 2 1 1.5-1 2-1 1 1 2 1v6H8v-6z"/></svg></span>Birthday Decor</li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 9 8H4l4 4-1.5 7L12 15l5.5 4L16 12l4-4h-5z"/></svg></span>Engagement Decor</li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 3 10h2v10h5v-6h4v6h5V10h2z"/></svg></span>Housewarming Decor</li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 21V9l6-4v3.5L15 5v16H4zm2-2h2v-2H6v2zm4 0h2v-2h-2v2zm4 0h2v-9h-2v9zM6 15h2v-2H6v2zm4 0h2v-2h-2v2z"/></svg></span>Corporate Decor</li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1.5 3 4 4.5 4 8a4 4 0 1 1-8 0c0-3.5 2.5-5 4-8zM4 14c1.5 2 3.5 3 3.5 5.5A3.5 3.5 0 0 1 4 23a3.5 3.5 0 0 1-3.5-3.5C.5 17 2.5 16 4 14zm16 0c1.5 2 3.5 3 3.5 5.5A3.5 3.5 0 0 1 20 23a3.5 3.5 0 0 1-3.5-3.5c0-2.5 2-3.5 3.5-5.5z"/></svg></span>Spiritual Guest Decor</li>
+      </ul>
+
+      <div class="section-title"><span class="line"></span><span>Get In Touch</span><span class="line right"></span></div>
+      <div class="contacts">
+        <div class="contact-row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.5.4-1 1-1h3.5c.5 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg></span>
+          <a href="tel:+16477619135">647 761 9135</a>
+        </div>
+        <div class="contact-row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.5.4-1 1-1h3.5c.5 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg></span>
+          <a href="tel:+16479175456">647 917 5456</a>
+        </div>
+        <div class="contact-row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.5.4-1 1-1h3.5c.5 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg></span>
+          <a href="tel:+19059239850">905 923 9850</a>
+        </div>
+        <div class="contact-row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
+          <a href="mailto:harieventsdecor@gmail.com">harieventsdecor@gmail.com</a>
+        </div>
+        <div class="contact-row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></span>
+          <span>Brampton, Ontario, Canada</span>
+        </div>
+      </div>
+
+      <div class="qr-wrap">
+        <img class="qr"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACdUlEQVR4nO2bTWrkMBCFvxobspQhB8hR5JsNOdLcwD5KDhCwlgGZNwvJbXeTH0I6HTtULUy7+1s8KF6pVFKb+EyMfz6Fg/POO++88847/xZvNVogtUAyWx8l+hvqcf7KfJQkTcDYnX4LEtBIknTOf7ce56/Mp5NDmQ1Cxqyby3fV2DfV4/w38tanFuLTnTTsQY/zV+RDRo8dpVJb/+N6nP8KvxTeICCBwZ0gPLca+9lEgu0IZG/6nf8gts0TjYjTxWP5LUrSsDf9zr8fxb+rQ0WarTzGrqEa+3Z6nL8uX/0bldFAIwgZ6q4ooyHkgpRw/x6Xt796sfo5ZKynkfXpTttOa8f6nX8lan81dpOM1EH81yJSmwVzK9I9kGwp4XvT7/wHUetuyMsQq7yqtlZRGeJ04vam3/kPYs2vhvKaWRdhoNlm3/N7MH7TX5Wslg1RkNZMe391XH7x7+LVi1MFDUF1SOn+PTIfXqwYNj61APPZceFSvfer3/k34mx+RdkEb9fkUp+z91fH5JfFdWpElMpUsvTPZRGeoLbTnt8D8kt/NVH75+HUOsepqfkthdvze0D+NH/OLYTn1ghAHEDjw4sRB58/H5nf+Hcxca3Pm4W5ONn9e0B+u7ndJFSqJw1xzb7n97D8en+yXLIDyv0c3x/9Dr6MniewPkh67ObNSRKjtVh/Sz3OX4k/X3+XrVGc1kkWZwcPe9Pv/PvRXrxbfDIEGY29IdJ9ttHw88HfwWsIkllHsTPjQ90OW/8jepz/Gn86P6pDrM1Uclj7Z59PHpVf7m+UdqrBCM3SNdPIYD4r4XvT7/z7Yf7/buedd955552/Of8fhOD8LHCAXd8AAAAASUVORK5CYII='
+          alt="QR code linking to Instagram">
+        <p class="celebrate">Let's Celebrate Together! &hearts;</p>
+        <p class="socials">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-2.7 0-3 0-4.1.1-1 .1-1.7.2-2.3.5-.6.2-1.1.6-1.6 1.1S3.3 4.7 3 5.3c-.2.6-.4 1.3-.5 2.3C2.4 9 2.4 9.3 2.4 12s0 3 .1 4.1c.1 1 .2 1.7.5 2.3.2.6.6 1.1 1.1 1.6s1 .9 1.6 1.1c.6.2 1.3.4 2.3.5C9 21.6 9.3 21.6 12 21.6s3 0 4.1-.1c1-.1 1.7-.2 2.3-.5.6-.2 1.1-.6 1.6-1.1s.9-1 1.1-1.6c.2-.6.4-1.3.5-2.3.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-1-.2-1.7-.5-2.3-.2-.6-.6-1.1-1.1-1.6S19.3 3.3 18.7 3c-.6-.2-1.3-.4-2.3-.5C15.3 2.4 15 2.4 12.3 2.4H12zm0 2c2.6 0 2.9 0 4 .1.9.1 1.5.2 1.9.3.5.2.8.4 1.1.7.3.3.5.6.7 1.1.1.4.3 1 .3 1.9.1 1.1.1 1.4.1 4s0 2.9-.1 4c-.1.9-.2 1.5-.3 1.9-.2.5-.4.8-.7 1.1-.3.3-.6.5-1.1.7-.4.1-1 .3-1.9.3-1.1.1-1.4.1-4 .1s-2.9 0-4-.1c-.9-.1-1.5-.2-1.9-.3-.5-.2-.8-.4-1.1-.7-.3-.3-.5-.6-.7-1.1-.1-.4-.3-1-.3-1.9C4 14.9 4 14.6 4 12s0-2.9.1-4c.1-.9.2-1.5.3-1.9.2-.5.4-.8.7-1.1.3-.3.6-.5 1.1-.7.4-.1 1-.3 1.9-.3 1.1-.1 1.4-.1 4-.1zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.3A3.3 3.3 0 1 1 12 8.7a3.3 3.3 0 0 1 0 6.6zm5.2-8.5a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4z"/></svg></span>
+          @harieventsdecor
+        </p>
+      </div>
+
+      <div class="foot-rule"></div>
+      <p class="location">Creating Beautiful Moments in Brampton, Ontario</p>
+
+    </div>
+  </div>
+</body>
 </html>
