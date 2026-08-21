@@ -6,94 +6,137 @@
 <title>Hari Events & Decor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marcellus&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Marcellus&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream: #fbf3e7;
-    --cream-deep: #f3e3cd;
-    --blush: #f0c9c0;
+    --cream: #fdf6ea;
+    --cream-deep: #f4e4c9;
+    --paper: #fffbf2;
+    --blush: #f3cabf;
+    --blush-deep: #e9a99a;
     --gold: #b8863b;
-    --gold-deep: #8a5f22;
+    --gold-light: #d9a441;
+    --gold-deep: #7a531c;
     --ink: #4a3a2c;
-    --ink-soft: #7a6552;
-    --peacock-teal: #1f6f6b;
-    --peacock-blue: #2c4f8c;
+    --ink-soft: #8a7360;
+    --teal: #1f6f6b;
+    --teal-deep: #0f4744;
+    --navy: #2c4f8c;
   }
 
   *{box-sizing:border-box;}
+  html{ scroll-behavior:smooth; }
 
   body{
     margin:0;
     min-height:100vh;
     background:
-      radial-gradient(circle at 12% 8%, rgba(240,201,192,.55), transparent 40%),
-      radial-gradient(circle at 88% 92%, rgba(240,201,192,.5), transparent 42%),
+      radial-gradient(circle at 10% 6%, rgba(243,202,191,.6), transparent 38%),
+      radial-gradient(circle at 92% 94%, rgba(243,202,191,.55), transparent 40%),
+      radial-gradient(circle at 90% 8%, rgba(217,164,65,.18), transparent 35%),
       linear-gradient(160deg, var(--cream) 0%, var(--cream-deep) 100%);
     font-family: 'Marcellus', serif;
     color: var(--ink);
-    padding: 28px 16px;
+    padding: 34px 14px;
     display:flex;
     justify-content:center;
   }
 
+  body::before{
+    content:'';
+    position:fixed; inset:0;
+    background-image:
+      radial-gradient(circle, rgba(217,164,65,.5) 1px, transparent 1.6px);
+    background-size: 46px 46px;
+    opacity:.35;
+    pointer-events:none;
+  }
+
   .card{
     position:relative;
-    max-width: 480px;
+    max-width: 500px;
     width:100%;
-    background: linear-gradient(180deg, #fffdf9, #fdf6ea);
-    border-radius: 28px;
-    padding: 3px;
-    box-shadow: 0 24px 50px rgba(122, 88, 40, .22), 0 2px 8px rgba(122,88,40,.12);
+    background: linear-gradient(180deg, var(--paper), #fbf1de);
+    border-radius: 30px;
+    padding: 4px;
+    box-shadow:
+      0 30px 60px rgba(122, 88, 40, .24),
+      0 4px 14px rgba(122,88,40,.14);
   }
 
   .card-inner{
     position:relative;
     border: 1.5px solid var(--gold);
-    outline: 1px solid rgba(184,134,59,.35);
-    outline-offset: 4px;
-    border-radius: 24px;
-    padding: 34px 26px 28px;
+    outline: 1px solid rgba(184,134,59,.32);
+    outline-offset: 5px;
+    border-radius: 26px;
+    padding: 0 26px 30px;
     overflow:hidden;
   }
 
-  /* corner floral flourishes, drawn in CSS/SVG so no external assets needed */
-  .corner{
-    position:absolute;
-    width: 92px;
-    height: 92px;
-    opacity: .9;
-    pointer-events:none;
+  .arch-header{
+    position:relative;
+    margin: -1px -27px 0;
+    padding: 36px 20px 20px;
+    background:
+      radial-gradient(120% 90% at 50% 0%, rgba(233,169,154,.55), transparent 60%),
+      linear-gradient(180deg, #fff8ec, transparent);
+    text-align:center;
+    overflow:hidden;
   }
-  .corner svg{width:100%;height:100%;}
-  .tl{ top:-6px; left:-6px; }
-  .tr{ top:-6px; right:-6px; transform: scaleX(-1); }
-  .bl{ bottom:-6px; left:-6px; transform: scaleY(-1); }
-  .br{ bottom:-6px; right:-6px; transform: scale(-1,-1); }
+
+  .arch-header svg.arch-bg{
+    position:absolute;
+    top:0; left:50%;
+    transform: translateX(-50%);
+    width: 340px;
+    max-width: 90%;
+    opacity:.9;
+    z-index:0;
+  }
+
+  .lantern{
+    position:absolute;
+    top: 2px;
+    width: 30px;
+    opacity:.92;
+    filter: drop-shadow(0 3px 4px rgba(122,88,40,.25));
+  }
+  .lantern.left{ left: 8px; }
+  .lantern.right{ right: 8px; transform: scaleX(-1); }
+  .lantern .flame{ animation: flicker 2.4s ease-in-out infinite; transform-origin: center; }
+
+  @keyframes flicker{
+    0%,100%{ opacity:1; transform: scale(1); }
+    50%{ opacity:.75; transform: scale(.9); }
+  }
 
   .peacock{
+    position:relative;
     display:block;
-    margin: 0 auto -8px;
-    width: 46px;
-    height: 70px;
+    margin: 0 auto -6px;
+    width: 52px;
+    height: 78px;
+    z-index:1;
   }
 
   .brand{
-    text-align:center;
-    margin-top: 4px;
     position:relative;
-    z-index:2;
+    z-index:1;
+    text-align:center;
   }
 
   .logo{
     font-family:'Tangerine', cursive;
-    font-size: 96px;
-    line-height: .8;
+    font-weight:700;
+    font-size: 104px;
+    line-height: .75;
     margin: 0;
-    background: linear-gradient(180deg, #d9a441 0%, #8a5f22 55%, #b8863b 100%);
+    background: linear-gradient(180deg, #e6b559 0%, #8a5f22 55%, #b8863b 100%);
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
-    filter: drop-shadow(0 1px 0 rgba(255,255,255,.6));
+    filter: drop-shadow(0 1px 0 rgba(255,255,255,.7));
   }
 
   .sub{
@@ -102,15 +145,25 @@
     font-family:'Marcellus', serif;
     font-size: 15px;
     color: var(--gold-deep);
-    margin: 6px 0 10px;
+    margin: 4px 0 12px;
     text-transform: uppercase;
   }
 
   .rule{
-    width: 130px;
+    width: 140px;
     height: 1px;
     margin: 0 auto 14px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    position:relative;
+  }
+  .rule::before{
+    content:'✦';
+    position:absolute; top:50%; left:50%;
+    transform: translate(-50%,-50%);
+    background: var(--paper);
+    padding: 0 8px;
+    color: var(--gold);
+    font-size: 11px;
   }
 
   .tag{
@@ -119,15 +172,29 @@
     font-style: italic;
     font-size: 17px;
     color: var(--ink-soft);
-    margin: 0 0 22px;
+    margin: 0 0 4px;
     line-height:1.5;
   }
+
+  .corner{
+    position:absolute;
+    width: 100px;
+    height: 100px;
+    opacity: .85;
+    pointer-events:none;
+    z-index:0;
+  }
+  .corner svg{width:100%;height:100%;}
+  .bl{ bottom:-8px; left:-8px; }
+  .br{ bottom:-8px; right:-8px; transform: scaleX(-1); }
+
+  .body-content{ position:relative; z-index:1; padding-top: 22px; }
 
   .actions{
     display:grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    margin-bottom: 22px;
+    margin-bottom: 26px;
   }
 
   .btn{
@@ -141,15 +208,16 @@
     font-family:'Marcellus', serif;
     font-size: 14px;
     letter-spacing:.3px;
-    transition: transform .15s ease, box-shadow .15s ease;
+    transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
   }
+  .btn:hover{ filter: brightness(1.04); }
   .btn:active{ transform: scale(.97); }
   .btn svg{ width:16px; height:16px; flex-shrink:0; }
 
   .gold{
-    background: linear-gradient(180deg, #c9964a, #a4711f);
+    background: linear-gradient(180deg, #d9a441, #a4711f);
     color: #fff8ec;
-    box-shadow: 0 6px 14px rgba(164,113,31,.35);
+    box-shadow: 0 8px 16px rgba(164,113,31,.35);
   }
   .light{
     background: #fffaf0;
@@ -162,7 +230,11 @@
     align-items:center;
     justify-content:center;
     gap: 10px;
-    margin: 4px 0 14px;
+    margin: 6px 0 16px;
+  }
+  .section-title .icon{
+    width: 20px; height:20px; color: var(--gold);
+    flex-shrink:0;
   }
   .section-title span{
     font-family:'Marcellus', serif;
@@ -183,28 +255,31 @@
 
   .services{
     list-style:none;
-    margin: 0 0 24px;
+    margin: 0 0 28px;
     padding: 0;
     display:grid;
-    gap: 10px;
+    gap: 11px;
   }
   .services li{
     display:flex;
     align-items:center;
-    gap: 12px;
+    gap: 13px;
     font-family:'Cormorant Garamond', serif;
     font-size: 18px;
     color: var(--ink);
-    padding-bottom: 8px;
+    padding-bottom: 9px;
     border-bottom: 1px dashed rgba(184,134,59,.35);
+    transition: transform .15s ease;
   }
+  .services li:hover{ transform: translateX(3px); }
   .services li:last-child{ border-bottom:none; }
   .services .ic{
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     flex-shrink:0;
     border-radius:50%;
-    background: linear-gradient(180deg, #f3ddb8, #e7c48a);
+    background: linear-gradient(150deg, #f6e3bb, #e7c48a);
+    box-shadow: inset 0 0 0 1px rgba(184,134,59,.4);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -214,23 +289,24 @@
 
   .contacts{
     display:grid;
-    gap: 10px;
-    margin-bottom: 24px;
+    gap: 11px;
+    margin-bottom: 28px;
   }
   .contact-row{
     display:flex;
     align-items:center;
-    gap: 12px;
+    gap: 13px;
     font-family:'Cormorant Garamond', serif;
     font-size: 17px;
   }
   .contact-row a{ color: var(--ink); text-decoration:none; }
+  .contact-row a:hover{ color: var(--gold-deep); }
   .contact-row .ic{
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     flex-shrink:0;
     border-radius:50%;
-    background: linear-gradient(180deg, #c9964a, #8a5f22);
+    background: linear-gradient(150deg, #d9a441, #8a5f22);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -240,25 +316,43 @@
 
   .qr-wrap{
     text-align:center;
-    margin: 6px 0 6px;
+    margin: 4px 0 4px;
+    position:relative;
   }
+  .qr-frame{
+    position:relative;
+    display:inline-block;
+    padding: 14px;
+    background: linear-gradient(160deg, #fffdf8, #fbf1de);
+    border-radius: 20px;
+    border: 1px solid var(--gold);
+    box-shadow: 0 10px 24px rgba(122,88,40,.2);
+    margin-bottom: 14px;
+  }
+  .qr-frame::before, .qr-frame::after,
+  .qr-frame .corner-tick-l, .qr-frame .corner-tick-r{
+    content:'';
+    position:absolute;
+    width: 16px; height:16px;
+    border: 2px solid var(--gold);
+  }
+  .qr-frame::before{ top:4px; left:4px; border-right:none; border-bottom:none; }
+  .qr-frame::after{ top:4px; right:4px; border-left:none; border-bottom:none; }
+  .qr-frame .corner-tick-l{ bottom:4px; left:4px; border-right:none; border-top:none; }
+  .qr-frame .corner-tick-r{ bottom:4px; right:4px; border-left:none; border-top:none; }
   .qr{
     display:block;
-    margin: 0 auto 12px;
-    width: 168px;
-    height:168px;
-    padding: 10px;
-    background:#fff;
-    border-radius: 16px;
-    border: 1px solid var(--gold);
-    box-shadow: 0 8px 20px rgba(122,88,40,.18);
+    width: 156px;
+    height:156px;
+    border-radius: 8px;
   }
+
   .celebrate{
     font-family:'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 18px;
+    font-size: 19px;
     color: var(--gold-deep);
-    margin: 0 0 8px;
+    margin: 0 0 10px;
   }
   .socials{
     display:flex;
@@ -270,9 +364,10 @@
     color: var(--ink-soft);
     margin: 0;
   }
+  .socials a{ display:flex; align-items:center; gap:10px; text-decoration:none; color: inherit; }
   .socials .ic{
-    width: 26px; height:26px; border-radius:50%;
-    background: linear-gradient(180deg, #c9964a, #8a5f22);
+    width: 27px; height:27px; border-radius:50%;
+    background: linear-gradient(150deg, #d9a441, #8a5f22);
     display:flex; align-items:center; justify-content:center; color:#fff8ec;
   }
   .socials .ic svg{ width:14px; height:14px; }
@@ -280,7 +375,7 @@
   .foot-rule{
     width: 60%;
     height:1px;
-    margin: 22px auto 12px;
+    margin: 26px auto 12px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
   }
   .location{
@@ -296,9 +391,22 @@
   @media (prefers-reduced-motion: no-preference){
     .card{ animation: rise .6s ease both; }
     @keyframes rise{
-      from{ opacity:0; transform: translateY(14px); }
+      from{ opacity:0; transform: translateY(16px); }
       to{ opacity:1; transform: translateY(0); }
     }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .lantern .flame{ animation:none; }
+  }
+
+  a:focus-visible, .btn:focus-visible{
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 380px){
+    .logo{ font-size: 84px; }
+    .qr{ width:136px; height:136px; }
   }
 </style>
 </head>
@@ -306,125 +414,154 @@
   <div class="card">
     <div class="card-inner">
 
-      <div class="corner tl" aria-hidden="true">
-        <svg viewBox="0 0 100 100" fill="none">
-          <path d="M4 4 C 30 4, 40 20, 46 46" stroke="#b8863b" stroke-width="1.4" fill="none" opacity=".7"/>
-          <circle cx="10" cy="10" r="4" fill="#f0c9c0"/>
-          <circle cx="22" cy="16" r="6" fill="#e9b8ab"/>
-          <circle cx="34" cy="26" r="5" fill="#f3ddb8"/>
-          <circle cx="16" cy="26" r="3.5" fill="#f0c9c0"/>
-        </svg>
-      </div>
-      <div class="corner tr" aria-hidden="true">
-        <svg viewBox="0 0 100 100" fill="none">
-          <path d="M4 4 C 30 4, 40 20, 46 46" stroke="#b8863b" stroke-width="1.4" fill="none" opacity=".7"/>
-          <circle cx="10" cy="10" r="4" fill="#f0c9c0"/>
-          <circle cx="22" cy="16" r="6" fill="#e9b8ab"/>
-          <circle cx="34" cy="26" r="5" fill="#f3ddb8"/>
-          <circle cx="16" cy="26" r="3.5" fill="#f0c9c0"/>
-        </svg>
-      </div>
       <div class="corner bl" aria-hidden="true">
         <svg viewBox="0 0 100 100" fill="none">
-          <path d="M4 4 C 30 4, 40 20, 46 46" stroke="#b8863b" stroke-width="1.4" fill="none" opacity=".7"/>
-          <circle cx="10" cy="10" r="4" fill="#f0c9c0"/>
-          <circle cx="22" cy="16" r="6" fill="#e9b8ab"/>
-          <circle cx="34" cy="26" r="5" fill="#f3ddb8"/>
-          <circle cx="16" cy="26" r="3.5" fill="#f0c9c0"/>
+          <path d="M6 6 C 34 6, 46 22, 52 52" stroke="#b8863b" stroke-width="1.3" fill="none" opacity=".65"/>
+          <circle cx="12" cy="12" r="4.5" fill="#f3cabf"/>
+          <circle cx="25" cy="18" r="7" fill="#e9a99a"/>
+          <circle cx="38" cy="29" r="5.5" fill="#f6e3bb"/>
+          <circle cx="18" cy="29" r="4" fill="#f3cabf"/>
+          <path d="M10 10 q6 -6 12 0" stroke="#7a9c5f" stroke-width="1.4" fill="none" opacity=".7"/>
         </svg>
       </div>
       <div class="corner br" aria-hidden="true">
         <svg viewBox="0 0 100 100" fill="none">
-          <path d="M4 4 C 30 4, 40 20, 46 46" stroke="#b8863b" stroke-width="1.4" fill="none" opacity=".7"/>
-          <circle cx="10" cy="10" r="4" fill="#f0c9c0"/>
-          <circle cx="22" cy="16" r="6" fill="#e9b8ab"/>
-          <circle cx="34" cy="26" r="5" fill="#f3ddb8"/>
-          <circle cx="16" cy="26" r="3.5" fill="#f0c9c0"/>
+          <path d="M6 6 C 34 6, 46 22, 52 52" stroke="#b8863b" stroke-width="1.3" fill="none" opacity=".65"/>
+          <circle cx="12" cy="12" r="4.5" fill="#f3cabf"/>
+          <circle cx="25" cy="18" r="7" fill="#e9a99a"/>
+          <circle cx="38" cy="29" r="5.5" fill="#f6e3bb"/>
+          <circle cx="18" cy="29" r="4" fill="#f3cabf"/>
+          <path d="M10 10 q6 -6 12 0" stroke="#7a9c5f" stroke-width="1.4" fill="none" opacity=".7"/>
         </svg>
       </div>
 
-      <!-- peacock feather -->
-      <svg class="peacock" viewBox="0 0 60 90" aria-hidden="true">
-        <path d="M30 88 C 30 60, 30 40, 30 20" stroke="#8a5f22" stroke-width="2" fill="none"/>
-        <ellipse cx="30" cy="16" rx="14" ry="20" fill="#f3ddb8" opacity=".9"/>
-        <ellipse cx="30" cy="16" rx="9" ry="14" fill="var(--peacock-teal)"/>
-        <ellipse cx="30" cy="16" rx="4.5" ry="8" fill="var(--peacock-blue)"/>
-        <ellipse cx="30" cy="14" rx="2" ry="3.5" fill="#c9964a"/>
-      </svg>
+      <header class="arch-header">
+        <svg class="arch-bg" viewBox="0 0 340 170" aria-hidden="true">
+          <path d="M20 170 V70 Q20 15 170 15 Q320 15 320 70 V170"
+                fill="none" stroke="#c99a3a" stroke-width="2" opacity=".55"/>
+          <path d="M40 170 V78 Q40 32 170 32 Q300 32 300 78 V170"
+                fill="none" stroke="#c99a3a" stroke-width="1.2" opacity=".4"/>
+          <circle cx="170" cy="15" r="5" fill="#c99a3a" opacity=".55"/>
+        </svg>
 
-      <div class="brand">
-        <h1 class="logo">Hari</h1>
-        <h3 class="sub">Events &amp; Decor</h3>
-        <div class="rule"></div>
-        <p class="tag">Creating Beautiful Moments,<br>One Celebration at a Time &hearts;</p>
+        <svg class="lantern left" viewBox="0 0 40 60" aria-hidden="true">
+          <line x1="20" y1="0" x2="20" y2="10" stroke="#8a5f22" stroke-width="1.5"/>
+          <path d="M10 12 h20 l-4 34 h-12 z" fill="#e9c37a" stroke="#8a5f22" stroke-width="1.2"/>
+          <ellipse class="flame" cx="20" cy="30" rx="5" ry="8" fill="#f3d27a"/>
+          <ellipse cx="20" cy="10" rx="6" ry="3" fill="#8a5f22"/>
+          <ellipse cx="20" cy="47" rx="6" ry="3" fill="#8a5f22"/>
+        </svg>
+        <svg class="lantern right" viewBox="0 0 40 60" aria-hidden="true">
+          <line x1="20" y1="0" x2="20" y2="10" stroke="#8a5f22" stroke-width="1.5"/>
+          <path d="M10 12 h20 l-4 34 h-12 z" fill="#e9c37a" stroke="#8a5f22" stroke-width="1.2"/>
+          <ellipse class="flame" cx="20" cy="30" rx="5" ry="8" fill="#f3d27a"/>
+          <ellipse cx="20" cy="10" rx="6" ry="3" fill="#8a5f22"/>
+          <ellipse cx="20" cy="47" rx="6" ry="3" fill="#8a5f22"/>
+        </svg>
+
+        <svg class="peacock" viewBox="0 0 60 90" aria-hidden="true">
+          <path d="M30 88 C 30 60, 30 40, 30 22" stroke="#8a5f22" stroke-width="2" fill="none"/>
+          <path d="M30 30 C 14 22, 8 4, 16 0 C 18 8, 24 16, 30 20 C 36 16, 42 8, 44 0 C 52 4, 46 22, 30 30 Z"
+                fill="#f3ddb8" opacity=".95"/>
+          <ellipse cx="30" cy="16" rx="10" ry="16" fill="var(--teal)"/>
+          <ellipse cx="30" cy="15" rx="6" ry="11" fill="var(--navy)"/>
+          <ellipse cx="30" cy="13" rx="3" ry="6" fill="#c9964a"/>
+          <ellipse cx="30" cy="12" rx="1.3" ry="2.6" fill="#4a3a2c"/>
+        </svg>
+
+        <div class="brand">
+          <h1 class="logo">Hari</h1>
+          <h3 class="sub">Events &amp; Decor</h3>
+          <div class="rule"></div>
+          <p class="tag">Creating Beautiful Moments,<br>One Celebration at a Time &hearts;</p>
+        </div>
+      </header>
+
+      <div class="body-content">
+
+        <div class="actions">
+          <a class="btn gold" href="tel:+16477619135">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.5.4-1 1-1h3.5c.5 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+            Call Now
+          </a>
+          <a class="btn gold" href="https://wa.me/16477619135">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.5.8 3.1 1.3 4.8 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1.1-2.5c.3-.3.6-.4.9-.4h.6c.2 0 .5 0 .7.5.3.7.9 2.3 1 2.4.1.2.1.4 0 .6-.1.2-.2.4-.4.6-.2.2-.4.5-.6.6-.2.2-.4.4-.2.8.2.4 1 1.6 2.1 2.6 1.4 1.3 2.6 1.7 3 1.9.4.2.6.1.8-.1.2-.3.9-1 1.1-1.4.2-.4.5-.3.8-.2.3.1 2 .9 2.3 1.1.3.2.5.3.6.4.1.2.1.9-.1 1.6z"/></svg>
+            WhatsApp
+          </a>
+          <a class="btn light" href="Hari_Events_Decor.vcf" download>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-3 0-9 1.5-9 4.5V21h18v-2.5c0-3-6-4.5-9-4.5z"/></svg>
+            Save Contact
+          </a>
+          <a class="btn light" href="mailto:harieventsdecor@gmail.com">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Email
+          </a>
+        </div>
+
+        <div class="section-title">
+          <span class="line"></span>
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1.5 3 4 4.5 4 8a4 4 0 1 1-8 0c0-3.5 2.5-5 4-8z"/></svg>
+          <span>Our Services</span>
+          <span class="line right"></span>
+        </div>
+        <ul class="services">
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-2.5 0-4.5 2-4.5 4.5 0 1.5.7 2.7 1.8 3.6C7.9 12 7 13.4 7 15c0 3 2.2 5 5 5s5-2 5-5c0-1.6-.9-3-2.3-3.9 1.1-.9 1.8-2.1 1.8-3.6C16.5 5 14.5 3 12 3z"/></svg></span>Baby Shower Decorations</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-1.1 0-2 .9-2 2 0 .5.2 1 .5 1.3C9.6 6 9 6.9 9 8h6c0-1.1-.6-2-1.5-2.7.3-.3.5-.8.5-1.3 0-1.1-.9-2-2-2zM4 10v10h16V10c0-1-1-2-2-2H6c-1 0-2 1-2 2zm4 3c1 0 1.5-1 2-1s1 1 2 1 1.5-1 2-1 1 1 2 1v6H8v-6z"/></svg></span>Birthday Decor</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 9 8H4l4 4-1.5 7L12 15l5.5 4L16 12l4-4h-5z"/></svg></span>Engagement Decor</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 3 10h2v10h5v-6h4v6h5V10h2z"/></svg></span>Housewarming Decor</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 21V9l6-4v3.5L15 5v16H4zm2-2h2v-2H6v2zm4 0h2v-2h-2v2zm4 0h2v-9h-2v9zM6 15h2v-2H6v2zm4 0h2v-2h-2v2z"/></svg></span>Corporate Decor</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1.5 3 4 4.5 4 8a4 4 0 1 1-8 0c0-3.5 2.5-5 4-8zM4 14c1.5 2 3.5 3 3.5 5.5A3.5 3.5 0 0 1 4 23a3.5 3.5 0 0 1-3.5-3.5C.5 17 2.5 16 4 14zm16 0c1.5 2 3.5 3 3.5 5.5A3.5 3.5 0 0 1 20 23a3.5 3.5 0 0 1-3.5-3.5c0-2.5 2-3.5 3.5-5.5z"/></svg></span>Spiritual Guest Decor</li>
+        </ul>
+
+        <div class="section-title">
+          <span class="line"></span>
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.5.4-1 1-1h3.5c.5 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+          <span>Get In Touch</span>
+          <span class="line right"></span>
+        </div>
+        <div class="contacts">
+          <div class="contact-row">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.5.4-1 1-1h3.5c.5 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg></span>
+            <a href="tel:+16477619135">647 761 9135</a>
+          </div>
+          <div class="contact-row">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.5.4-1 1-1h3.5c.5 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg></span>
+            <a href="tel:+16479175456">647 917 5456</a>
+          </div>
+          <div class="contact-row">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.5.4-1 1-1h3.5c.5 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg></span>
+            <a href="tel:+19059239850">905 923 9850</a>
+          </div>
+          <div class="contact-row">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
+            <a href="mailto:harieventsdecor@gmail.com">harieventsdecor@gmail.com</a>
+          </div>
+          <div class="contact-row">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></span>
+            <span>Brampton, Ontario, Canada</span>
+          </div>
+        </div>
+
+        <div class="qr-wrap">
+          <div class="qr-frame">
+            <span class="corner-tick-l" aria-hidden="true"></span>
+            <span class="corner-tick-r" aria-hidden="true"></span>
+            <img class="qr"
+              src="data:image/png;base64,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"
+              alt="QR code linking to the Hari Events & Decor Instagram profile">
+          </div>
+          <p class="celebrate">Let's Celebrate Together! &hearts;</p>
+          <p class="socials">
+            <a href="https://www.instagram.com/harieventsdecor" target="_blank" rel="noopener">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-2.7 0-3 0-4.1.1-1 .1-1.7.2-2.3.5-.6.2-1.1.6-1.6 1.1S3.3 4.7 3 5.3c-.2.6-.4 1.3-.5 2.3C2.4 9 2.4 9.3 2.4 12s0 3 .1 4.1c.1 1 .2 1.7.5 2.3.2.6.6 1.1 1.1 1.6s1 .9 1.6 1.1c.6.2 1.3.4 2.3.5C9 21.6 9.3 21.6 12 21.6s3 0 4.1-.1c1-.1 1.7-.2 2.3-.5.6-.2 1.1-.6 1.6-1.1s.9-1 1.1-1.6c.2-.6.4-1.3.5-2.3.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-1-.2-1.7-.5-2.3-.2-.6-.6-1.1-1.1-1.6S19.3 3.3 18.7 3c-.6-.2-1.3-.4-2.3-.5C15.3 2.4 15 2.4 12.3 2.4H12zm0 2c2.6 0 2.9 0 4 .1.9.1 1.5.2 1.9.3.5.2.8.4 1.1.7.3.3.5.6.7 1.1.1.4.3 1 .3 1.9.1 1.1.1 1.4.1 4s0 2.9-.1 4c-.1.9-.2 1.5-.3 1.9-.2.5-.4.8-.7 1.1-.3.3-.6.5-1.1.7-.4.1-1 .3-1.9.3-1.1.1-1.4.1-4 .1s-2.9 0-4-.1c-.9-.1-1.5-.2-1.9-.3-.5-.2-.8-.4-1.1-.7-.3-.3-.5-.6-.7-1.1-.1-.4-.3-1-.3-1.9C4 14.9 4 14.6 4 12s0-2.9.1-4c.1-.9.2-1.5.3-1.9.2-.5.4-.8.7-1.1.3-.3.6-.5 1.1-.7.4-.1 1-.3 1.9-.3 1.1-.1 1.4-.1 4-.1zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.3A3.3 3.3 0 1 1 12 8.7a3.3 3.3 0 0 1 0 6.6zm5.2-8.5a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4z"/></svg></span>
+              @harieventsdecor
+            </a>
+          </p>
+        </div>
+
+        <div class="foot-rule"></div>
+        <p class="location">Creating Beautiful Moments in Brampton, Ontario</p>
       </div>
-
-      <div class="actions">
-        <a class="btn gold" href="tel:+16477619135">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.5.4-1 1-1h3.5c.5 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
-          Call Now
-        </a>
-        <a class="btn gold" href="https://wa.me/16477619135">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.5.8 3.1 1.3 4.8 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1.1-2.5c.3-.3.6-.4.9-.4h.6c.2 0 .5 0 .7.5.3.7.9 2.3 1 2.4.1.2.1.4 0 .6-.1.2-.2.4-.4.6-.2.2-.4.5-.6.6-.2.2-.4.4-.2.8.2.4 1 1.6 2.1 2.6 1.4 1.3 2.6 1.7 3 1.9.4.2.6.1.8-.1.2-.3.9-1 1.1-1.4.2-.4.5-.3.8-.2.3.1 2 .9 2.3 1.1.3.2.5.3.6.4.1.2.1.9-.1 1.6z"/></svg>
-          WhatsApp
-        </a>
-        <a class="btn light" href="Hari_Events_Decor.vcf" download>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-3 0-9 1.5-9 4.5V21h18v-2.5c0-3-6-4.5-9-4.5z"/></svg>
-          Save Contact
-        </a>
-        <a class="btn light" href="mailto:harieventsdecor@gmail.com">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          Email
-        </a>
-      </div>
-
-      <div class="section-title"><span class="line"></span><span>Our Services</span><span class="line right"></span></div>
-      <ul class="services">
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 3a3 3 0 0 0-3 3c0 1.2.6 2.1 1.5 2.6C5.6 9.2 5 10 5 11a3 3 0 0 0 3 3c.4 0 .7-.1 1-.2V17a3 3 0 0 0 6 0v-3.2c.3.1.6.2 1 .2a3 3 0 0 0 3-3c0-1-.6-1.8-1.5-2.4C18.4 8.1 19 7.2 19 6a3 3 0 0 0-6 0c0 .8.3 1.4.8 1.9A2.9 2.9 0 0 0 12 6a2.9 2.9 0 0 0-1.8 1.9c.5-.5.8-1.1.8-1.9a3 3 0 0 0-3-3z"/></svg></span>Baby Shower Decorations</li>
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-1.1 0-2 .9-2 2 0 .5.2 1 .5 1.3C9.6 6 9 6.9 9 8h6c0-1.1-.6-2-1.5-2.7.3-.3.5-.8.5-1.3 0-1.1-.9-2-2-2zM4 10v10h16V10c0-1-1-2-2-2H6c-1 0-2 1-2 2zm4 3c1 0 1.5-1 2-1s1 1 2 1 1.5-1 2-1 1 1 2 1v6H8v-6z"/></svg></span>Birthday Decor</li>
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 9 8H4l4 4-1.5 7L12 15l5.5 4L16 12l4-4h-5z"/></svg></span>Engagement Decor</li>
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 3 10h2v10h5v-6h4v6h5V10h2z"/></svg></span>Housewarming Decor</li>
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 21V9l6-4v3.5L15 5v16H4zm2-2h2v-2H6v2zm4 0h2v-2h-2v2zm4 0h2v-9h-2v9zM6 15h2v-2H6v2zm4 0h2v-2h-2v2z"/></svg></span>Corporate Decor</li>
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1.5 3 4 4.5 4 8a4 4 0 1 1-8 0c0-3.5 2.5-5 4-8zM4 14c1.5 2 3.5 3 3.5 5.5A3.5 3.5 0 0 1 4 23a3.5 3.5 0 0 1-3.5-3.5C.5 17 2.5 16 4 14zm16 0c1.5 2 3.5 3 3.5 5.5A3.5 3.5 0 0 1 20 23a3.5 3.5 0 0 1-3.5-3.5c0-2.5 2-3.5 3.5-5.5z"/></svg></span>Spiritual Guest Decor</li>
-      </ul>
-
-      <div class="section-title"><span class="line"></span><span>Get In Touch</span><span class="line right"></span></div>
-      <div class="contacts">
-        <div class="contact-row">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.5.4-1 1-1h3.5c.5 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg></span>
-          <a href="tel:+16477619135">647 761 9135</a>
-        </div>
-        <div class="contact-row">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.5.4-1 1-1h3.5c.5 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg></span>
-          <a href="tel:+16479175456">647 917 5456</a>
-        </div>
-        <div class="contact-row">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.5.4-1 1-1h3.5c.5 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg></span>
-          <a href="tel:+19059239850">905 923 9850</a>
-        </div>
-        <div class="contact-row">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
-          <a href="mailto:harieventsdecor@gmail.com">harieventsdecor@gmail.com</a>
-        </div>
-        <div class="contact-row">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></span>
-          <span>Brampton, Ontario, Canada</span>
-        </div>
-      </div>
-
-      <div class="qr-wrap">
-        <img class="qr"
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACdUlEQVR4nO2bTWrkMBCFvxobspQhB8hR5JsNOdLcwD5KDhCwlgGZNwvJbXeTH0I6HTtULUy7+1s8KF6pVFKb+EyMfz6Fg/POO++88847/xZvNVogtUAyWx8l+hvqcf7KfJQkTcDYnX4LEtBIknTOf7ce56/Mp5NDmQ1Cxqyby3fV2DfV4/w38tanFuLTnTTsQY/zV+RDRo8dpVJb/+N6nP8KvxTeICCBwZ0gPLca+9lEgu0IZG/6nf8gts0TjYjTxWP5LUrSsDf9zr8fxb+rQ0WarTzGrqEa+3Z6nL8uX/0bldFAIwgZ6q4ooyHkgpRw/x6Xt796sfo5ZKynkfXpTttOa8f6nX8lan81dpOM1EH81yJSmwVzK9I9kGwp4XvT7/wHUetuyMsQq7yqtlZRGeJ04vam3/kPYs2vhvKaWRdhoNlm3/N7MH7TX5Wslg1RkNZMe391XH7x7+LVi1MFDUF1SOn+PTIfXqwYNj61APPZceFSvfer3/k34mx+RdkEb9fkUp+z91fH5JfFdWpElMpUsvTPZRGeoLbTnt8D8kt/NVH75+HUOsepqfkthdvze0D+NH/OLYTn1ghAHEDjw4sRB58/H5nf+Hcxca3Pm4W5ONn9e0B+u7ndJFSqJw1xzb7n97D8en+yXLIDyv0c3x/9Dr6MniewPkh67ObNSRKjtVh/Sz3OX4k/X3+XrVGc1kkWZwcPe9Pv/PvRXrxbfDIEGY29IdJ9ttHw88HfwWsIkllHsTPjQ90OW/8jepz/Gn86P6pDrM1Uclj7Z59PHpVf7m+UdqrBCM3SNdPIYD4r4XvT7/z7Yf7/buedd955552/Of8fhOD8LHCAXd8AAAAASUVORK5CYII='
-          alt="QR code linking to Instagram">
-        <p class="celebrate">Let's Celebrate Together! &hearts;</p>
-        <p class="socials">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-2.7 0-3 0-4.1.1-1 .1-1.7.2-2.3.5-.6.2-1.1.6-1.6 1.1S3.3 4.7 3 5.3c-.2.6-.4 1.3-.5 2.3C2.4 9 2.4 9.3 2.4 12s0 3 .1 4.1c.1 1 .2 1.7.5 2.3.2.6.6 1.1 1.1 1.6s1 .9 1.6 1.1c.6.2 1.3.4 2.3.5C9 21.6 9.3 21.6 12 21.6s3 0 4.1-.1c1-.1 1.7-.2 2.3-.5.6-.2 1.1-.6 1.6-1.1s.9-1 1.1-1.6c.2-.6.4-1.3.5-2.3.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-1-.2-1.7-.5-2.3-.2-.6-.6-1.1-1.1-1.6S19.3 3.3 18.7 3c-.6-.2-1.3-.4-2.3-.5C15.3 2.4 15 2.4 12.3 2.4H12zm0 2c2.6 0 2.9 0 4 .1.9.1 1.5.2 1.9.3.5.2.8.4 1.1.7.3.3.5.6.7 1.1.1.4.3 1 .3 1.9.1 1.1.1 1.4.1 4s0 2.9-.1 4c-.1.9-.2 1.5-.3 1.9-.2.5-.4.8-.7 1.1-.3.3-.6.5-1.1.7-.4.1-1 .3-1.9.3-1.1.1-1.4.1-4 .1s-2.9 0-4-.1c-.9-.1-1.5-.2-1.9-.3-.5-.2-.8-.4-1.1-.7-.3-.3-.5-.6-.7-1.1-.1-.4-.3-1-.3-1.9C4 14.9 4 14.6 4 12s0-2.9.1-4c.1-.9.2-1.5.3-1.9.2-.5.4-.8.7-1.1.3-.3.6-.5 1.1-.7.4-.1 1-.3 1.9-.3 1.1-.1 1.4-.1 4-.1zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.3A3.3 3.3 0 1 1 12 8.7a3.3 3.3 0 0 1 0 6.6zm5.2-8.5a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4z"/></svg></span>
-          @harieventsdecor
-        </p>
-      </div>
-
-      <div class="foot-rule"></div>
-      <p class="location">Creating Beautiful Moments in Brampton, Ontario</p>
 
     </div>
   </div>
