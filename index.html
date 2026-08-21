@@ -59,7 +59,7 @@
     max-width:1080px;margin:0 auto;
   }
   .brandmark{display:flex;align-items:center;gap:10px;}
-  .brandmark img{height:38px;width:auto;display:block;}
+  .brandmark img{height:52px;width:auto;display:block;}
   .brandmark span{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;color:var(--berry-deep);}
   .head-actions{display:flex;gap:10px;}
   .icon-btn{
@@ -79,17 +79,50 @@
 
   /* ---------- Hero ---------- */
   .hero{
-    padding:78px 28px 0;
+    position:relative;
+    padding:84px 28px 0;
     text-align:center;
+    overflow:hidden;
+  }
+  .hero .mandala{
+    position:absolute;
+    top:50%;left:50%;
+    width:min(920px,150vw);height:min(920px,150vw);
+    transform:translate(-50%,-50%);
+    z-index:0;
+    opacity:0.5;
+    pointer-events:none;
+  }
+  .hero > *{position:relative;z-index:1;}
+  .hero .seal-wrap{
+    position:relative;
+    width:172px;height:172px;
+    margin:0 auto 30px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .seal-wrap .ring-dashed{
+    position:absolute;inset:0;
+    border-radius:50%;
+    border:1.5px dashed var(--gold-light);
+    animation:spin 60s linear infinite;
+  }
+  .seal-wrap .ring-solid{
+    position:absolute;inset:12px;
+    border-radius:50%;
+    border:1px solid var(--gold);
+    opacity:0.6;
   }
   .hero .logo-seal{
-    width:104px;height:104px;border-radius:50%;
-    margin:0 auto 28px;
+    width:140px;height:140px;border-radius:50%;
     display:flex;align-items:center;justify-content:center;
-    background:var(--rose);
-    box-shadow:0 0 0 1px var(--line), 0 14px 30px -12px rgba(124,31,61,0.35);
+    background:radial-gradient(circle at 32% 28%, #ffffff 0%, var(--rose) 62%, #f0d3c9 100%);
+    box-shadow:0 0 0 1px var(--line), 0 20px 44px -16px rgba(124,31,61,0.4), 0 0 0 8px rgba(251,245,236,1);
   }
-  .hero .logo-seal img{width:64%;height:64%;object-fit:contain;}
+  .hero .logo-seal img{width:70%;height:70%;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(43,14,35,0.15));}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  @media (prefers-reduced-motion:reduce){
+    .seal-wrap .ring-dashed{animation:none;}
+  }
   .hero h1{
     font-size:clamp(2.3rem,5.5vw,3.6rem);
     line-height:1.08;
@@ -244,7 +277,50 @@
 
 <!-- HERO -->
 <section class="hero">
+  <svg class="mandala" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="#B8923F" stroke-width="0.6">
+      <circle cx="200" cy="200" r="190"/>
+      <circle cx="200" cy="200" r="160"/>
+      <circle cx="200" cy="200" r="120"/>
+      <circle cx="200" cy="200" r="80"/>
+    </g>
+    <g fill="#B8923F" opacity="0.55">
+      <g id="petalset">
+        <ellipse cx="200" cy="30" rx="7" ry="20"/>
+      </g>
+      <use href="#petalset" transform="rotate(15 200 200)"/>
+      <use href="#petalset" transform="rotate(30 200 200)"/>
+      <use href="#petalset" transform="rotate(45 200 200)"/>
+      <use href="#petalset" transform="rotate(60 200 200)"/>
+      <use href="#petalset" transform="rotate(75 200 200)"/>
+      <use href="#petalset" transform="rotate(90 200 200)"/>
+      <use href="#petalset" transform="rotate(105 200 200)"/>
+      <use href="#petalset" transform="rotate(120 200 200)"/>
+      <use href="#petalset" transform="rotate(135 200 200)"/>
+      <use href="#petalset" transform="rotate(150 200 200)"/>
+      <use href="#petalset" transform="rotate(165 200 200)"/>
+      <use href="#petalset" transform="rotate(180 200 200)"/>
+      <use href="#petalset" transform="rotate(195 200 200)"/>
+      <use href="#petalset" transform="rotate(210 200 200)"/>
+      <use href="#petalset" transform="rotate(225 200 200)"/>
+      <use href="#petalset" transform="rotate(240 200 200)"/>
+      <use href="#petalset" transform="rotate(255 200 200)"/>
+      <use href="#petalset" transform="rotate(270 200 200)"/>
+      <use href="#petalset" transform="rotate(285 200 200)"/>
+      <use href="#petalset" transform="rotate(300 200 200)"/>
+      <use href="#petalset" transform="rotate(315 200 200)"/>
+      <use href="#petalset" transform="rotate(330 200 200)"/>
+      <use href="#petalset" transform="rotate(345 200 200)"/>
+    </g>
+  </svg>
   <span class="eyebrow">Brampton, Ontario — Est. in the Community</span>
+  <div class="seal-wrap">
+    <div class="ring-dashed"></div>
+    <div class="ring-solid"></div>
+    <div class="logo-seal">
+      <img src="https://aksh1150.github.io/hari-event/hari_logo.png" alt="Hari Events & Decor logo">
+    </div>
+  </div>
   <h1>Creating <em>beautiful</em> moments,<br>one celebration at a time</h1>
   <p class="lede">Custom decor for the milestones that matter most — baby showers, birthdays, engagements, and sacred gatherings — styled by hand with garlands, drapes, and colour.</p>
   <div class="cta-row">
